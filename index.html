@@ -352,6 +352,45 @@
     color: var(--text);
   }
 
+  .rsvp-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    padding: 2rem 2.5rem;
+    max-width: 600px;
+    margin: 2.5rem auto 0;
+  }
+
+  .rsvp-card h3 {
+    color: var(--navy);
+    font-size: 1.15rem;
+    margin-bottom: 1.25rem;
+    text-align: center;
+  }
+
+  .rsvp-checklist {
+    padding-left: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+
+  .rsvp-checklist li { color: var(--text); }
+
+  .rsvp-checklist ul {
+    margin-top: 0.6rem;
+    padding-left: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .rsvp-checklist ul li {
+    color: var(--sage);
+    font-size: 0.92rem;
+    list-style: '— ';
+  }
+
   footer {
     text-align: center;
     padding: 2rem;
@@ -563,7 +602,27 @@
   <div class="rsvp-block">
     <h2>Join Our Story</h2>
     <div class="deadline">Kindly respond by June 1, 2026</div>
-    <a class="rsvp-email" href="mailto:debidosan@yahoo.com">debidosan@yahoo.com</a>
+  </div>
+
+  <div class="rsvp-card">
+    <h3>When you email us, please include</h3>
+    <ol class="rsvp-checklist">
+      <li>Your full name (and the names of any guests joining you)</li>
+      <li>Number of adults and number of children attending</li>
+      <li>Which parts of the day you'll join:
+        <ul>
+          <li>Ceremony (11:00 AM, Akasaka Hikawa Shrine)</li>
+          <li>Celebration Lunch (1:00 PM, The Oak Door)</li>
+          <li>Evening Reception (7:30 PM, The Oak Door Bar)</li>
+          <li>Afterparty (10:00 PM, R2 Supperclub)</li>
+        </ul>
+      </li>
+      <li>Any dietary restrictions or allergies we should know about</li>
+    </ol>
+  </div>
+
+  <div class="rsvp-block" style="margin-top:2.5rem;">
+    <a class="rsvp-email" href="mailto:debidosan@yahoo.com?subject=Wedding%20RSVP%20-%20David%20%26%20Chieko">debidosan@yahoo.com</a>
     <div class="signoff">With love, David &amp; Chieko</div>
   </div>
 </section>
