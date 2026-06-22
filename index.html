@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>David & Chieko | July 24, 2026</title>
+<style>
+  :root {
+    --cream: #fdf6ec;
+    --cream-2: #faf0db;
+    --navy: #1f2937;
+    --red: #7A2D3E;
+    --sage: #8a9a6b;
+    --gold: #c9a04a;
+    --text: #4a4a48;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: var(--cream);
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  .serif { font-family: 'Georgia', serif; }
+  .mono-label {
+    font-family: 'Courier New', monospace;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    color: var(--sage);
+  }
+
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(253, 246, 236, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(122, 45, 62, 0.15);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  nav a {
+    color: var(--navy);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-family: 'Courier New', monospace;
+    transition: color 0.2s;
+  }
+
+  nav a:hover { color: var(--red); }
+
+  section {
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .hero {
+    min-height: 100vh;
+    text-align: center;
+    align-items: center;
+    background: linear-gradient(135deg, #fdf0e8 0%, #fdf6ec 50%, #f0f3e8 100%);
+  }
+
+  .hero .date {
+    font-family: 'Courier New', monospace;
+    letter-spacing: 0.2em;
+    color: var(--red);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 .amp { color: var(--red); }
+
+  .hero .tagline {
+    font-family: 'Courier New', monospace;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--sage);
+    font-size: 1rem;
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .section-title h2 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 400;
+    color: var(--navy);
+  }
+
+  .section-title .sub {
+    font-family: 'Courier New', monospace;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--sage);
+    font-size: 0.85rem;
+    margin-top: 0.75rem;
+  }
+
+  .divider {
+    width: 80px;
+    height: 3px;
+    margin: 1.5rem auto 0;
+    background: linear-gradient(90deg, var(--gold), var(--red));
+  }
+
+  .invite-block {
+    text-align: center;
+  }
+
+  .invite-block h2 {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    color: var(--navy);
+    margin-bottom: 1.5rem;
+  }
+
+  .invite-block p {
+    font-size: 1.15rem;
+    max-width: 600px;
+    margin: 0 auto;
+    color: var(--text);
+  }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    margin-top: 2.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .two-col { grid-template-columns: 1fr; }
+  }
+
+  .two-col img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  }
+
+  .info-card h3 {
+    color: var(--red);
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .info-card p { margin-bottom: 0.75rem; }
+
+  .info-card .time {
+    color: var(--red);
+    font-weight: bold;
+  }
+
+  .info-card .note {
+    font-style: italic;
+    color: var(--sage);
+    font-size: 0.95rem;
+  }
+
+  .traditions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-top: 1rem;
+  }
+
+  .traditions-list .item strong { color: var(--navy); }
+
+  .venue-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .venue-cards { grid-template-columns: 1fr; }
+  }
+
+  .venue-card {
+    background: white;
+    border-top: 3px solid var(--gold);
+    border-radius: 4px;
+    padding: 1.75rem;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  }
+
+  .venue-card h3 { color: var(--navy); margin-bottom: 0.75rem; }
+  .venue-card .vtime { font-weight: bold; color: var(--navy); }
+
+  .venue-card img {
+    width: 100%;
+    border-radius: 4px;
+    margin-top: 1rem;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+  }
+
+  .itinerary {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3rem;
+    position: relative;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .itinerary::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold), var(--red), var(--sage));
+  }
+
+  .itin-item {
+    flex: 1;
+    min-width: 140px;
+    text-align: center;
+    position: relative;
+  }
+
+  .itin-item .dot {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 3px solid var(--red);
+    background: var(--cream);
+    margin: 0 auto 0.75rem;
+  }
+
+  .itin-item .itime { color: var(--red); font-family: 'Courier New', monospace; font-size: 0.85rem; }
+  .itin-item h4 { color: var(--navy); margin: 0.4rem 0; }
+  .itin-item .idesc { font-size: 0.85rem; color: var(--text); }
+
+  .nav-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    padding: 2rem;
+    margin-top: 2.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  @media (max-width: 768px) {
+    .nav-card { grid-template-columns: 1fr; }
+  }
+
+  .nav-card .addr { margin-bottom: 1rem; }
+  .nav-card .addr p.label { font-weight: bold; color: var(--navy); }
+  .nav-card .addr p.street { color: var(--sage); font-size: 0.9rem; }
+
+  .nav-card .map-wrap {
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .nav-card .map-wrap img { width: 100%; display: block; }
+
+  .nav-card .note-row {
+    border-top: 1px solid #eee;
+    padding-top: 1rem;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--sage);
+  }
+
+  table.guest-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 2.5rem;
+    background: white;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  }
+
+  table.guest-table th {
+    background: var(--navy);
+    color: white;
+    text-align: left;
+    padding: 1rem;
+    font-family: 'Courier New', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  table.guest-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+    vertical-align: top;
+  }
+
+  table.guest-table .dresscode-cell {
+    background: #fdf3e8;
+  }
+
+  table.guest-table .dresscode-cell strong { color: var(--navy); display: block; margin-bottom: 0.3rem; }
+  table.guest-table .dresscode-cell span { font-size: 0.88rem; color: var(--text); }
+
+  .rsvp-block {
+    text-align: center;
+  }
+
+  .rsvp-block h2 { font-size: clamp(2rem, 5vw, 2.8rem); color: var(--navy); margin-bottom: 1rem; }
+  .rsvp-block .deadline { font-family: 'Courier New', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sage); font-size: 0.9rem; margin-bottom: 2rem; }
+
+  .rsvp-email {
+    display: inline-block;
+    border: 2px solid var(--gold);
+    padding: 1rem 2rem;
+    font-family: 'Courier New', monospace;
+    color: var(--red);
+    font-size: 1.1rem;
+    text-decoration: none;
+    border-radius: 4px;
+  }
+
+  .rsvp-block .signoff {
+    margin-top: 2rem;
+    font-style: italic;
+    color: var(--text);
+  }
+
+  footer {
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.8rem;
+    color: var(--sage);
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#hero">Home</a>
+  <a href="#ceremony">Ceremony</a>
+  <a href="#celebrations">Celebrations</a>
+  <a href="#itinerary">Itinerary</a>
+  <a href="#navigating">Getting Around</a>
+  <a href="#guest-info">Guest Info</a>
+  <a href="#rsvp">RSVP</a>
+</nav>
+
+<section class="hero" id="hero">
+  <div class="date">JULY 24, 2026 · TOKYO</div>
+  <h1>David <span class="amp">&amp;</span> Chieko</h1>
+  <div class="tagline">Celebrate Our Wedding Union</div>
+</section>
+
+<section id="invitation">
+  <div class="invite-block">
+    <h2>You Are Invited</h2>
+    <p>With joyful hearts, we invite you to join us as we exchange our wedding vows in a traditional Shinto ceremony.</p>
+  </div>
+</section>
+
+<section id="ceremony">
+  <div class="section-title">
+    <h2>The Sacred Ceremony</h2>
+    <div class="sub">A morning of tradition at Akasaka Hikawa Shrine</div>
+    <div class="divider"></div>
+  </div>
+
+  <div class="two-col">
+    <div class="info-card">
+      <h3>Akasaka Hikawa Shrine</h3>
+      <p>Built in 1730, this historic sanctuary is dedicated to the deities of marriage. We invite you to witness our vows amidst the serene greenery of Akasaka.</p>
+      <p><span class="time">Time: 11:00 AM Ceremony</span><br><span class="note">(Please arrive by 10:30 AM for registration)</span></p>
+      <p><strong>Address:</strong> 6-10-12 Akasaka, Minato-ku, Tokyo</p>
+    </div>
+    <img src="images/wedding-rite.jpg" alt="Akasaka Hikawa Shrine torii gate path">
+  </div>
+
+  <div class="two-col" style="margin-top:4rem;">
+    <div class="traditions-list">
+      <h3 style="color:var(--navy); margin-bottom:0.5rem;">Shinto Traditions</h3>
+      <div class="item"><strong>Sanshin:</strong> The solemn procession of the couple led by priests and Gagaku musicians into the sacred main hall.</div>
+      <div class="item"><strong>Sankon no gi:</strong> The exchange of nuptial sake cups, symbolizing the formal, lifelong bond between bride and groom.</div>
+      <div class="item"><strong>Gagaku:</strong> Ancient Japanese court music performed live by musicians to accompany the sacred rites.</div>
+    </div>
+    <img src="images/shinto-traditions.jpg" alt="Akasaka Hikawa Shrine main hall">
+  </div>
+</section>
+
+<section id="celebrations">
+  <div class="section-title">
+    <h2>The Celebrations</h2>
+    <div class="sub">From afternoon feast to late-night revelry</div>
+    <div class="divider"></div>
+  </div>
+
+  <div class="two-col">
+    <div class="info-card">
+      <h3>The Oak Door</h3>
+      <p>After the ceremony, we'll take some time for photos before heading to lunch together.</p>
+      <p>Join us at the Grand Hyatt Tokyo's Oak Door, where we'll share our first meal as a married couple, surrounded by family and friends.</p>
+      <p><span class="time">Start Time: 1:00 PM</span><br>Grand Hyatt Tokyo, 6th Floor</p>
+    </div>
+    <img src="images/oak-door-lunch.jpg" alt="The Oak Door dining room at Grand Hyatt Tokyo">
+  </div>
+
+  <div class="venue-cards">
+    <div class="venue-card">
+      <h3>The Oak Door Bar</h3>
+      <p><span class="vtime">7:30 PM</span> — Join us at the bar for signature snacks and drinks as the evening gets started.</p>
+      <img src="images/oak-door-bar.jpg" alt="The Oak Door Bar">
+    </div>
+    <div class="venue-card">
+      <h3>R2 Supperclub</h3>
+      <p><span class="vtime">10:00 PM</span> — From there, we'll move to R2 to keep the celebration going with music and dancing into the night.</p>
+      <img src="images/r2-supperclub.jpg" alt="R2 Supperclub Roppongi">
+    </div>
+  </div>
+</section>
+
+<section id="itinerary">
+  <div class="section-title">
+    <h2>The Wedding Itinerary</h2>
+    <div class="divider"></div>
+  </div>
+
+  <div class="itinerary">
+    <div class="itin-item">
+      <div class="dot"></div>
+      <div class="itime">10:30 AM</div>
+      <h4>Guest Arrival</h4>
+      <div class="idesc">Hikawa Shrine Registration</div>
+    </div>
+    <div class="itin-item">
+      <div class="dot"></div>
+      <div class="itime">11:00 AM</div>
+      <h4>Sacred Rites</h4>
+      <div class="idesc">Traditional Shinto Ceremony</div>
+    </div>
+    <div class="itin-item">
+      <div class="dot"></div>
+      <div class="itime">1:00 PM</div>
+      <h4>Lunch Feast</h4>
+      <div class="idesc">The Oak Door Celebration</div>
+    </div>
+    <div class="itin-item">
+      <div class="dot"></div>
+      <div class="itime">7:30 PM</div>
+      <h4>Cocktails</h4>
+      <div class="idesc">The Oak Door Bar</div>
+    </div>
+    <div class="itin-item">
+      <div class="dot"></div>
+      <div class="itime">10:00 PM</div>
+      <h4>Afterparty</h4>
+      <div class="idesc">R2 Supperclub Late Night</div>
+    </div>
+  </div>
+</section>
+
+<section id="navigating">
+  <div class="section-title">
+    <h2>Navigating the Day</h2>
+    <div class="divider"></div>
+  </div>
+
+  <div class="nav-card">
+    <div>
+      <div class="addr">
+        <p class="label">A. Akasaka Hikawa Shrine</p>
+        <p class="street">6-10-12 Akasaka</p>
+      </div>
+      <div class="addr">
+        <p class="label">B. Grand Hyatt Tokyo (Oak Door)</p>
+        <p class="street">6-10-3 Roppongi</p>
+      </div>
+      <div class="addr">
+        <p class="label">C. R2 Supperclub</p>
+        <p class="street">7-14-23 Roppongi</p>
+      </div>
+      <div class="note-row">
+        A brief 8-minute taxi connects all three locations.<br>
+        A 9-minute downhill walk connects Roppongi Station to the shrine.
+      </div>
+    </div>
+    <div class="map-wrap">
+      <img src="images/route-map.jpg" alt="Walking route from Roppongi Station to Akasaka Hikawa Shrine">
+    </div>
+  </div>
+</section>
+
+<section id="guest-info">
+  <div class="section-title">
+    <h2>Guest Information</h2>
+    <div class="divider"></div>
+  </div>
+
+  <table class="guest-table">
+    <tr>
+      <th>Event Segment</th>
+      <th>Time</th>
+      <th>Location</th>
+      <th>Dress Code</th>
+    </tr>
+    <tr>
+      <td><strong>Ceremony</strong></td>
+      <td style="color:var(--red); font-weight:bold;">11:00 AM</td>
+      <td>Akasaka Hikawa Shrine</td>
+      <td class="dresscode-cell" rowspan="2">
+        <strong>Elegant Formal</strong>
+        <span>Formal suits, ceremonial kimono, or smart day dresses. No time or need to change between ceremony &amp; lunch.</span>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Celebration Lunch</strong></td>
+      <td style="color:var(--red); font-weight:bold;">1:00 PM</td>
+      <td>The Oak Door, Grand Hyatt</td>
+    </tr>
+    <tr>
+      <td><strong>Evening Reception</strong></td>
+      <td style="color:var(--sage);">7:30 PM</td>
+      <td>The Oak Door Bar, Grand Hyatt</td>
+      <td class="dresscode-cell" rowspan="2">
+        <strong>Cocktail Chic</strong>
+        <span>Sophisticated evening suits, cocktail dresses, or sleek evening coordinates. Rejoin us elegantly refreshed.</span>
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Afterparty</strong></td>
+      <td style="color:var(--sage);">10:00 PM</td>
+      <td>R2 Supperclub Roppongi</td>
+    </tr>
+  </table>
+</section>
+
+<section id="rsvp">
+  <div class="rsvp-block">
+    <h2>Join Our Story</h2>
+    <div class="deadline">Kindly respond by June 1, 2026</div>
+    <a class="rsvp-email" href="mailto:debidosan@yahoo.com">debidosan@yahoo.com</a>
+    <div class="signoff">With love, David &amp; Chieko</div>
+  </div>
+</section>
+
+<footer>
+  David &amp; Chieko · July 24, 2026 · Tokyo
+</footer>
+
+</body>
+</html>
